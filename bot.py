@@ -13,8 +13,8 @@ def process_txt_file(update, context):
     with open('input.txt', 'r') as infile:
         lines = infile.readlines()
 
-    # Filter lines to keep only those containing 'cdn-vidu'
-    filtered_lines = [line for line in lines if 'cdn-vidu' in line]
+    # Filter lines to keep only those containing 'cdn-vidu' but not ending with '.pdf'
+    filtered_lines = [line for line in lines if 'cdn-vidu' not in line or not line.strip().endswith('.pdf')]
 
     # Prepare the corrected content
     corrected_content = '\n'.join(filtered_lines)
