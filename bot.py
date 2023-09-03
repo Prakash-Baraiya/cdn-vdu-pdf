@@ -54,7 +54,7 @@ def cancel(update: Update, context: CallbackContext) -> int:
 
 def main() -> None:
     # Initialize the Telegram bot
-    updater = Updater(token="YOUR_BOT_TOKEN", use_context=True)
+    updater = Updater(token="6598445027:AAHOiQ5_P-SV_x0aPH1iuUku6SOboIiMvys", use_context=True)
     dp = updater.dispatcher
 
     # Define the conversation handler
