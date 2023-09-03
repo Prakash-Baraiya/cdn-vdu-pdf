@@ -1,5 +1,6 @@
 import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+import re
 
 # Replace 'YOUR_BOT_TOKEN' with your actual bot token obtained from BotFather on Telegram
 bot_token = '6598445027:AAHOiQ5_P-SV_x0aPH1iuUku6SOboIiMvys'
@@ -13,8 +14,11 @@ def process_txt_file(update, context):
     with open('input.txt', 'r') as infile:
         lines = infile.readlines()
 
-    # Filter lines to keep only those containing 'cdn-vidu' but not ending with '.pdf'
-    filtered_lines = [line for line in lines if 'cdn-vidu' not in line or not line.strip().endswith('.pdf')]
+    # Filter out lines containing '.m3u8' or '.pdf'
+    filtered_lines = [line for line in lines if not any(ext in line for ext in ['.m3u8', '.pdf'])]
+
+    # Remove empty lines
+    filtered_lines = [line.strip() for line in filtered_lines if line.strip()]
 
     # Prepare the corrected content
     corrected_content = '\n'.join(filtered_lines)
